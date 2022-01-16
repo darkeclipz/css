@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            font-size: 1rem;
+            font-family: sans-serif;
+        }
+
+        .layout-sidebar {
+            display: flex;
+            flex-wrap: wrap;
+            height: 100vh;
+            gap: 1em;
+        }
+
+        .layout-sidebar > :first-child {
+            /* The width when the sidebar is a sidebar */
+            flex-basis: 20rem;
+            flex-grow: 1;
+
+            background-color: orangered;
+        }
+
+        .layout-sidebar > :last-child {
+            flex-basis: 0;
+            flex-grow: 999;
+
+            /* Wrap when the elements are of equal width. */
+            min-inline-size: 50%;
+
+            background-color: palegreen;
+        }
+
+        p {
+            max-block-size: 60ch;
+            max-width: 60ch;
+            background-color: plum;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .grid > * {
+            flex: 1 1 20rem;
+            background-color: royalblue;
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+    <div class="layout-sidebar">
+        <nav>
+            This is the sidebar.
+        </nav>
+        <content>
+            <h1>Sidebar Layout</h1>
+            <p>
+                Here goes the content, which is sitting in a paragraph.
+                However, we do want to keep things readable, so we limit the width of a paragraph to <code>60ch</code>.
+            </p>
+            <div class="grid">
+                <div>A</div>
+                <div>B</div>
+                <div>C</div>
+                <div>D</div>
+                <div>E</div>
+                <div>F</div>
+                <div>G</div>
+                <div>H</div>
+                <div>I</div>
+                <div>J</div>
+                <div>K</div>
+            </div>
+        </content>
+    </div>
+</body>
+</html>

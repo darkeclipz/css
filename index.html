@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        :root {
+            /* Harmonic series for font sizes, and other sizes as well. */
+            --ratio: 1.5;
+            --s-5: calc(var(--s4) / var(--ratio));
+            --s-4: calc(var(--s3) / var(--ratio));
+            --s-3: calc(var(--s2) / var(--ratio));
+            --s-2: calc(var(--s1) / var(--ratio));
+            --s-1: calc(var(--s0) / var(--ratio));
+            --s0: 1rem;
+            --s1: calc(var(--s0) * var(--ratio));
+            --s2: calc(var(--s1) * var(--ratio));
+            --s3: calc(var(--s2) * var(--ratio));
+            --s4: calc(var(--s3) * var(--ratio));
+            --s5: calc(var(--s4) * var(--ratio));
+
+            --primary-color: rgb(60, 47, 243);
+
+            /* Scale the font proportionately to the screen width. */
+            font-size: calc(1rem + 0.5vw);
+
+            font-size: 1.5rem;
+            font-size: clamp(1.5rem, calc(1rem + 3vw), 2rem);
+
+            /* Any properties that are defined here, are inherited globally
+               by all the other elements. */
+            font-family: serif;
+            color: #111;
+        }
+
+        * {
+            /* Styles in here are applied to each element directly. */
+            background-color: rgba(0, 0, 0, 0.075);
+            box-sizing: border-box; /* The element width and height is not changed by setting the padding and the border. */
+        }
+
+        p code {
+            font-size: 0.875em;
+        }
+
+        h1, h2, h3 {
+            font-family: sans-serif;
+        }
+
+        h2 strong {
+            /* Scale the size of h2 by 1.125 by using em (it's relative to the size of h2). */
+            font-size: 1.125em;
+        }
+
+        .my-element {
+            font-size: pow(var(--ratio), 3);
+            color: gray;
+        }
+
+        /* Utility examples */
+        .font-size\:base {
+            font-size: var(--s0);
+        }
+
+        .font-size\:biggish {
+            font-size: var(--s1);
+        }
+
+        .font-size\:big {
+            font-size: var(--s2);
+        }
+
+        .text-align\:left {
+            text-align: left;
+        }
+
+        .text-align\:center {
+            text-align: center;
+        }
+
+        .text-align\:right {
+            text-align: right;
+        }
+
+        /* Custom elements */
+        stack-l {
+
+            /* Custom elements are inline by default, so we change this to block. */
+            display: block;
+            background-color: var(--primary-color);
+
+        }
+
+        /* 
+            '* + *; is the owl operator: https://alistapart.com/article/axiomatic-css-and-lobotomized-owls/. 
+        */
+        stack-l > * + * {
+
+            /* This makes a stack a stack, by having margin between the vertical elements. */
+            margin-block-start: var(--s1); 
+                /* == margin-top: var(--s1); but then adjusted for text reading direction */
+
+
+        }
+
+        li:first-of-type + li {
+
+            /* Only apply the red style to the li that comes after the first li element. */
+            color: var(--primary-color);
+
+        }
+
+        li + li {
+
+            /* Applies the style to any li element that is preceded by a li element. */
+            text-decoration: underline;
+
+        }
+
+        .n-th-element {
+
+            display: flex;
+            flex-direction: row;
+            color: white; /* Used to test color: currentColor */
+
+        }
+
+        .n-th-element div {
+            width: 2vw;
+            height: 2vw;
+            background-color: var(--primary-color);
+        }
+
+        .n-th-element div:nth-child(2n+1) { 
+
+            /* Apply color to all the odd numbered elements. */
+            background-color: yellow;
+
+        }
+
+        .n-th-element div:nth-child(2n) {
+
+            /* Apply color to all the even numbered elements. */
+            background-color: black;
+
+        }
+
+        .n-th-element div:nth-child(1) {
+
+            /* Apply color to the first element. */
+            background-color: var(--primary-color);
+
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS++; Getting up-to-date</h1>
+
+    <h2>What is a <code>rem</code>?</h2>
+    <p>
+        The unit <code>rem</code> is defined as the <i>root font size</i>.
+        The default value is <code>1rem</code>.
+        This font size is set by the settings defined in the browser or operating system. 
+        To improve accessibility, we need to use the unit <code>rem</code>.
+    </p>
+
+    <h2>Beauty of the Harmonic Series</h2>
+    <p>
+        The first few elements of the Harmonic Series are: <code>[1, 1.5, 2.25, 3.375, 5.0625, 7.59375, 11.390625, ...]</code>.
+    </p>
+    <div style="font-size: var(--s5)">Harmonics</div>
+    <div style="font-size: var(--s4)">Harmonics</div>
+    <div style="font-size: var(--s3)">Harmonics</div>
+    <div style="font-size: var(--s2)">Harmonics</div>
+    <div style="font-size: var(--s1)">Harmonics</div>
+    <div style="font-size: var(--s0)">Harmonics</div>
+    <div style="display: flex; flex-direction: row; align-items: flex-end; ">
+        <div style="width: var(--s0); height: var(--s0); background-color: black;"></div>
+        <div style="width: var(--s1); height: var(--s1); background-color: black;"></div>
+        <div style="width: var(--s2); height: var(--s2); background-color: black;"></div>
+        <div style="width: var(--s3); height: var(--s3); background-color: black;"></div>
+        <div style="width: var(--s4); height: var(--s4); background-color: black;"></div>
+        <div style="width: var(--s5); height: var(--s5); background-color: black;"></div>
+    </div>
+    <div class="my-element">
+        This is an example element using the POW function, which is not yet released.
+    </div>
+    <div id="js-element">
+        This is an example element with a style assigned by Javascript.
+    </div>
+    <script type="text/javascript">
+        // This example demonstrates how to retrieve the variables declared in the :root scope.
+        const rootStyles = getComputedStyle(document.documentElement);
+        const scale = rootStyles.getPropertyValue("--s1");
+        const element = document.getElementById("js-element");
+        element.style.fontSize = scale;
+    </script>
+
+    <h2>Viewport Units</h2>
+    <p>
+        There are two viewport units which correspond to one percentage of the users' screen.
+        The viewport unit for the width of the screen is <code>1vw</code>, one view width, wich is 1% of the width of the screen.
+        Likewise for the height, we have <code>1vh</code>.
+    </p>
+
+    <h2>The <code><strong>em</strong></code> unit</h2>
+    <p>
+        The <code>em</code> unit is used to increase the size of something relative to the size it already has.
+        As a rule of thumb, it is better to use <code>em</code> units for sizing inline elements, and <code>rem</code> units are better for block elements.
+    </p>
+
+    <h2>The <code>ch</code> and <code>ex</code> units</h2>
+    <p style="max-inline-size: 60ch;">
+        The width of one character is denoted with the <code>ch</code> unit.
+        This is useful to set for example, the maximum number of characters that are allowed on one line.
+        In this example, the maximum characters on one line is set to 60 characters.
+        The unit <code>ex</code> denotes the height of one character, also known as the corpus size.
+        The width in pixels on a full line is determined by the relationship of the <code>rem</code> unit and the <code>ch</code>-based <code>max-width</code>.
+    </p>
+    <p>
+        Using these units, everything is relative to the users' settings in the operating system or browser.
+    </p>
+
+    <h2>Global styles</h2>
+    <p>
+        See the comments in the CSS section for more information about global styles.
+        In a nutshell, use <code>:root</code> to have elements inherit the style, and <code>* { ... }</code> to style the elements directly.
+    </p>
+
+    <h2>Utility classes</h2>
+    <p>
+        Utility classes can be defined as <code>.text-align\:center { ... }</code>.
+        Note that by using <code>\:</code> (which escapes the <code>:</code> char), we can create a helpful way to recollect the different values.
+    </p>
+    <p class="text-align:center">
+        This text is aligned in the cented by using the utility class, <code>text-align:center</code>.
+    </p>
+
+    <h2>Custom HTML elements</h2>
+    <stack-l>
+        <div>...</div>
+        <div>...</div>
+        <div>...</div>
+    </stack-l>
+
+    <h2>Adjacent sibling combinator</h2>
+    <p>The adjacent sibling combinator (<code>+</code>)</p> seperates two selectors and matches the second element only if it immediately follows the first element, and both are children of the same parent element.
+    <div>
+        <ul>
+            <li>One</li>
+            <li>Two</li>
+            <li>Three</li>
+        </ul>
+    </div>
+
+    <h2><code>n-th</code> element</h2>
+    <div class="n-th-element">
+        <div style="color: currentColor">A</div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</body> 
+</html>
