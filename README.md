@@ -66,6 +66,7 @@ Everything that is displayed on a monitor is done so with pixels. However, most 
  * A liberal use of the element selector (`*`) is the hallmark of a comprehensive design system.
    * liberal: _existing in large quantities_.
  * Treat branding/aesthetic and layout as two seperate concerns.
+ * Local or scoped styles can be done with the `#` attribute, because it is limited to one single instance.
 
 Make sure you don't fix a problem for a specific element, in a specific context, because usually we should be solving the general problem. To do so, _utility classes_ are handy, and are defined with the following specific notation:
 
@@ -85,3 +86,92 @@ Make sure you don't fix a problem for a specific element, in a specific context,
 ```
 
 Sharing values between utility classes is a job for _custom properties_ (`--*`).
+
+### Modular scale
+
+The harmonic series is a sequence of fractions based on the arithmetic series of incrementation by 1.
+
+```js
+1, 2, 3, 4, 5, 6, ... // arithmetic series
+1, ½, ⅓, ¼, ⅕, ⅙, ... // harmonic series
+```
+
+We can use this to create visual harmony too, by multiplying changing size by `1.5`:
+
+```css
+:root {
+  --ratio: 1.5;
+  --s-5: calc(var(--s-4) / var(--ratio));
+  --s-4: calc(var(--s-3) / var(--ratio));
+  --s-3: calc(var(--s-2) / var(--ratio));
+  --s-2: calc(var(--s-1) / var(--ratio));
+  --s-1: calc(var(--s0) / var(--ratio));
+  --s0: 1rem;
+  --s1: calc(var(--s0) * var(--ratio));
+  --s2: calc(var(--s1) * var(--ratio));
+  --s3: calc(var(--s2) * var(--ratio));
+  --s4: calc(var(--s3) * var(--ratio));
+  --s5: calc(var(--s4) * var(--ratio));
+}
+```
+
+This can also be defined by using the `pow()` operator:
+
+```css
+:root {
+  --ratio: 1.5rem;
+}
+.my-element {
+  /* ↓ 1.5 * 1.5 * 1.5 is equal to 1.5³ */
+  font-size: pow(var(--ratio), 3);
+}
+```
+
+Scaling elements using the harmonic series result in beautiful layouts.
+
+### Axioms
+
+ * The width of a line of text, in characters, is knows as its _meaure_.
+ * _The Elements of Typographic Style_ suggests a measure between `45ch` and `75ch`.
+ * `.measure-cap { max-inline-size: 60ch; }` is not the best way to approach this problem. This means we have to define it for each element, a better approach is this:
+
+```css
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+figcaption {
+  max-inline-size: 60ch;
+}
+```
+
+ * It also makes sense to define the measure on a `:root` level, e.g. `:root { --measure: 60ch; }`, and used in the followng way:
+
+```css
+:root {
+  --measure: 60ch;
+}
+
+* {
+  max-width: var(--measure);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+  max-inline-size: none;
+}
+```
+
+Alright, that's it for the preamble. Let's take a look at the different CSS design patterns.
+
+## Design patterns for CSS
+
