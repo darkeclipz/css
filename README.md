@@ -175,3 +175,66 @@ Alright, that's it for the preamble. Let's take a look at the different CSS desi
 
 ## Design patterns for CSS
 
+### Stack
+
+A stack is used to insert vertical margin between elements.
+
+```css
+.stack {
+  /* ↓ The flex context */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.stack > * {
+  /* ↓ Any extant vertical margins are removed */
+  margin-block: 0;
+}
+.stack > * + * {
+  /* ↓ Top margin is only applied to successive elements */
+  margin-block-start: var(--space, 1.5rem;);
+}
+```
+
+If a margin is added around the stack element, then we violate the components encapsulation. To do this, we would use the next design pattern.
+
+### Box
+
+A box is used to add a padding to the elements in the box, or to add a border around it. 
+
+```css
+.box {
+  /* ↓ Padding set to the first point on the modular scale */
+  padding: var(--s1);
+  /* ↓ Assumes you have a --border-thin var */
+  border: var(--border-thin) solid;
+  /* ↓ Always apply the transparent outline, for high contrast mode */
+  outline: var(--border-thin) transparent;
+  outline-offset: calc(var(--border-thin) * -1);
+  /* ↓ The light and dark color vars */
+  --color-light: #fff;
+  --color-dark: #000;
+  color: var(--color-dark);
+  background-color: var(--color-light);
+}
+
+.box * {
+  /* ↓ Force colors to inherit from the parent
+  and honor inversion (below) */
+  color: inherit;
+}
+
+.box.invert {
+  /* ↓ The color vars inverted */
+  color: var(--color-light);
+  background-color: var(--color-dark);
+}
+```
+
+In a greyscale design, it is easy to switch from a light theme to a dark theme with a `filter`:
+
+```css
+.box.invert {
+  filter: invert(100%);
+}
+```
