@@ -6,7 +6,7 @@ This document aims to briefly explain various topics about CSS, as well as a set
 
 ## Rudiments
 
-The first chapters define the a more general view on how to create a composable layout with CSS, whilst the later chapters explain specific design patterns, or as called by the book, primitive types.
+The first chapters define a more general view on how to create a composable layout with CSS, whilst the later chapters explain specific design patterns, or as called by the book, primitive types.
 
 ### Boxes
 
