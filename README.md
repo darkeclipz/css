@@ -29,7 +29,7 @@ The first chapters define the a more general view on how to create a composable 
 ### Composition
 
  * Reusable CSS favors composition over inheritance. 
- * Instead of defining, for example, the CSS of a dialog, it is more beneficial to write classes that define certian behaviour, and those can then be composed to generate the final layout.
+ * Instead of defining, for example, the CSS of a dialog, it is more beneficial to write classes that define certain behaviour, and those can then be composed to generate the final layout.
  * Define a set of _primitives_ that can be used to _compose_ layouts.
  * The goal is that each layout is intrinsically response. That means we do not have to use `@media` query breakpoints.
  * Primitives should have a basic responsibility, such as:
@@ -47,7 +47,7 @@ Everything that is displayed on a monitor is done so with pixels. However, most 
  * Learn to extrapolate your layouts from your text's intrinsic dimensions and your designs will be beautiful.
  * Don't convert between `px` and `rem`, and let `calc(...)` do most of the heavy lifting!
  * In case it was not clear yet, don't use `px` for font sizes!
- * `vw`, and `vh` are viewport units, `1vw` is equal to 1% of the screen width, and `vh` is equal to 1% of the screen height.
+ * `vw`, and `vh` are viewport units, `1vw` is equal to 1% of the screen width, and `1vh` is equal to 1% of the screen height.
  * Using viewport units and `calc(...)` we can scale dimensions automatically, but with a minimum value.
    * `:root { font-size: calc(1rem + 0.5vw); }`
  * The `em` unit can be used to increase/decrease the size based of the `rem` value.
