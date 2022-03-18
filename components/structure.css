@@ -1,0 +1,273 @@
+* {
+    /* background-color: rgba(255, 0, 0, 0.2); */
+}
+
+:root {
+    --measure: 60ch;
+    --ratio: 1.5;
+    --s-5: calc(var(--s-4) / var(--ratio));
+    --s-4: calc(var(--s-3) / var(--ratio));
+    --s-3: calc(var(--s-2) / var(--ratio));
+    --s-2: calc(var(--s-1) / var(--ratio));
+    --s-1: calc(var(--s0) / var(--ratio));
+    --s0: 1rem;
+    --s1: calc(var(--s0) * var(--ratio));
+    --s2: calc(var(--s1) * var(--ratio));
+    --s3: calc(var(--s2) * var(--ratio));
+    --s4: calc(var(--s3) * var(--ratio));
+    --s5: calc(var(--s4) * var(--ratio));
+}
+
+:root {
+    --color-primary: var(--color-primary-500);
+    --color-primary-000: hsl(221, 68%, 93%);
+    --color-primary-100: hsl(221, 78%, 86%);
+    --color-primary-200: hsl(224, 67%, 76%);
+    --color-primary-300: hsl(225, 57%, 67%);
+    --color-primary-400: hsl(227, 50%, 59%);
+    --color-primary-500: hsl(227, 42%, 51%);
+    --color-primary-600: hsl(228, 45%, 45%);
+    --color-primary-700: hsl(230, 49%, 41%);
+    --color-primary-800: hsl(232, 51%, 36%);
+    --color-primary-900: hsl(234, 62%, 26%);
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.measure {
+    max-width: var(--measure);
+}
+
+html,
+body,
+div,
+header,
+nav,
+main,
+footer {
+    max-inline-size: none;
+}
+
+.text\:extra-small {
+    font-size: var(--s-2);
+}
+
+.text\:small {
+    font-size: var(--s-1);
+}
+
+.text\:big {
+    font-size: var(--s2);
+}
+
+.gap\:s3 {
+    gap: var(--s3);
+}
+
+.gap\:s2 {
+    gap: var(--s2);
+}
+
+.gap\:s1 {
+    gap: var(--s1);
+}
+
+.gap {
+    gap: var(--s0);
+}
+
+.gap\:s-1 {
+    gap: var(--s-1);
+}
+
+.stack-column>*+* {
+    margin-block: 2rem;
+}
+
+.stack-column.gap {
+    margin-block: 10rem;
+}
+
+.padding\:s3 {
+    padding: var(--s3);
+}
+
+.padding\:s2 {
+    padding: var(--s2);
+}
+
+.padding\:s1 {
+    padding: var(--s1);
+}
+
+.padding {
+    padding: var(--s0);
+}
+
+.padding\:s-1 {
+    padding: var(--s-1);
+}
+
+.margin\:s3 {
+    margin: var(--s3);
+}
+
+.margin\:s2 {
+    margin: var(--s2);
+}
+
+.margin\:s1 {
+    margin: var(--s1);
+}
+
+.margin {
+    margin: var(--s0);
+}
+
+.margin\:s-1 {
+    margin: var(--s-1);
+}
+
+.flex {
+    display: flex;
+    flex-direction: row;
+}
+
+.justify\:space-between {
+    justify-content: space-between;
+}
+
+.wrap {
+    flex-wrap: wrap;
+}
+
+.stack-colmn {
+    display: flex;
+    flex-direction: column;
+}
+
+.stack-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.center {
+    margin: auto;
+}
+
+.color\:primary-000 {
+    color: var(--color-primary-000);
+}
+
+.color\:primary-100 {
+    color: var(--color-primary-100);
+}
+
+.color\:primary-200 {
+    color: var(--color-primary-200);
+}
+
+.color\:primary-300 {
+    color: var(--color-primary-300);
+}
+
+.color\:primary-400 {
+    color: var(--color-primary-400);
+}
+
+.color\:primary,
+.color\:primary-500 {
+    color: var(--color-primary-500);
+}
+
+.color\:primary-600 {
+    color: var(--color-primary-600);
+}
+
+.color\:primary-700 {
+    color: var(--color-primary-700);
+}
+
+.color\:primary-800 {
+    color: var(--color-primary-800);
+}
+
+.color\:primary-900 {
+    color: var(--color-primary-900);
+}
+
+.bg-color\:primary,
+.bg-color\:primary-500 {
+    background-color: var(--color-primary-500);
+}
+
+.bg-color\:primary-000 {
+    background-color: var(--color-primary-000);
+}
+
+.bg-color\:primary-100 {
+    background-color: var(--color-primary-100);
+}
+
+.bg-color\:primary-200 {
+    background-color: var(--color-primary-200);
+}
+
+.bg-color\:primary-300 {
+    background-color: var(--color-primary-300);
+}
+
+.bg-color\:primary-400 {
+    background-color: var(--color-primary-400);
+}
+
+.bg-color\:primary-500 {
+    background-color: var(--color-primary-500);
+}
+
+.bg-color\:primary-600 {
+    background-color: var(--color-primary-600);
+}
+
+.bg-color\:primary-700 {
+    background-color: var(--color-primary-700);
+}
+
+.bg-color\:primary-800 {
+    background-color: var(--color-primary-800);
+}
+
+.bg-color\:primary-900 {
+    background-color: var(--color-primary-900);
+}
+
+.radius\:s {
+    border-radius: var(--s-2);
+}
+
+.radius,
+.radius-m {
+    border-radius: var(--s0);
+}
+
+.shadow {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), 0 12px 20px rgba(0, 0, 0, 0.25);
+}
