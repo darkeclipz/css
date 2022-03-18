@@ -6,7 +6,7 @@ This document aims to briefly explain various topics about CSS, as well as a set
 
 ## Rudiments
 
-The first chapters define the a more general view on how to create composable layout with CSS, whilst the later chapters explain specific design patterns, or as called by the book, primitive types.
+The first chapters define the a more general view on how to create a composable layout with CSS, whilst the later chapters explain specific design patterns, or as called by the book, primitive types.
 
 ### Boxes
 
@@ -19,7 +19,7 @@ The first chapters define the a more general view on how to create composable la
    * `margin-inline-end` will apply a margin to the right.
    * `padding-inline` which will apply a padding to the left and the right.
    * `margin-block` applies a margin to the top and the bottom.
-   * `margin-block-start` applies the margin to the left.
+   * `margin-block-start` applies the margin to the top.
  * Content makes `inline` elements grow horizontally, and `block` elements grow vertically.
  * By default the dimension of a box are the dimensions of the box's content plus its padding and border values (implicitly set with `box-sizing: content-box`). It is much easier to set this to `box-sizing: border-box` for all elements, because it then behaves as expected.
    * `* { box-sizing: border-box }`
